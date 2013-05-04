@@ -1,5 +1,31 @@
 var assert = require( "assert" )
 
+describe( "scoping rules", function () {
+
+  it( "do not have C blocks", function () {
+
+    var x = 1;
+
+    {
+      x = 10;
+    }
+
+    assert.equal( x, 10 );
+    
+  })
+
+  it( "do have function blocks", function () {
+  
+    (function z () {
+      var x = 10;
+    })()
+
+    assert.equal( typeof x, "undefined" );
+    
+  })
+
+})
+
 describe( "hoisting", function () {
 
   it( "should see var", function () {
