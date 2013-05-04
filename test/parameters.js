@@ -26,3 +26,31 @@ describe( "Function parameters", function () {
   })
 
 })
+
+describe( "Function invocation", function () {
+
+  it( "as a function", function(){
+  
+    function bar() {
+      assert.equal( typeof this.console, "object" );
+    }
+
+    bar();
+
+  })
+
+  it( "as a method", function () {
+  
+    var o = {};
+
+    o.baz = function () {
+      this.x = 12;
+    };
+    assert.equal( o.x, undefined );
+
+    o.baz();
+    assert.equal( o.x, 12 );
+
+  })
+
+})
