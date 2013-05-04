@@ -1,5 +1,4 @@
 var assert = require( "assert" )
-var h = require( "../hoisting.js" )
 
 describe( "hoisting", function () {
 
@@ -41,12 +40,10 @@ describe( "hoisting", function () {
     function b() {
 
       assert.equal(typeof a, 'function');
-
       a = 10;
 
       assert.equal(typeof a, 'number');
       assert.equal(a,10);
-
       return;
 
       function a() {}
